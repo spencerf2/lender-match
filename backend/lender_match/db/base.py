@@ -29,8 +29,9 @@ class BaseTable(Base):
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
-    # `onupdate` is applied by SQLAlchemy on every UPDATE it issues. Rows changed
-    # outside SQLAlchemy (raw SQL, psql) will not refresh it.
+    # `onupdate` is applied by SQLAlchemy on every UPDATE it issues.
+    # Rows changed outside SQLAlchemy (raw SQL, psql) will not refresh
+    # it.
     updated_at: Mapped[datetime] = mapped_column(
         server_default=func.now(), onupdate=func.now()
     )
