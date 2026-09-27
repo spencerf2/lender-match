@@ -1,0 +1,43 @@
+[project]
+name = "lender_match"
+version = "0.1.0"
+description = "Lender match backend"
+requires-python = ">=3.12,<4.0"
+# All dependencies, runtime and dev, are pinned to an exact version
+# published at least 7 days ago, for supply-chain security
+dependencies = [
+    "sqlalchemy (==2.0.54)"
+]
+
+[tool.poetry.group.dev.dependencies]
+ruff = "0.16.8"
+pyright = "1.1.414"
+pytest = "9.1.1"
+nodeenv = "1.10.0"  # pulled in by pyright
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
+[tool.ruff]
+target-version = "py312"  # match .python-version major.minor
+
+[tool.ruff.lint]
+# Keep ruff's default rules (E4, E7, E9, F) and add isort on top
+extend-select = [
+  "I",  # isort
+]
+ignore = [
+  "E701",  # Multiple statements on one line (colon)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]  # Allow unused imports
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
