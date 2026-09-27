@@ -473,6 +473,7 @@ def upgrade() -> None:
                 "is_true",
                 "is_false",
                 "is_null",
+                "count_at_least",
                 name="criterion_operator",
                 native_enum=False,
                 create_constraint=True,
@@ -681,7 +682,7 @@ def upgrade() -> None:
         sa.Column("program_id", sa.Uuid(), nullable=False),
         sa.Column("credit_grade", sa.Text(), nullable=True),
         sa.Column("min_amount", sa.Numeric(precision=14, scale=2), nullable=False),
-        sa.Column("max_amount", sa.Numeric(precision=14, scale=2), nullable=False),
+        sa.Column("max_amount", sa.Numeric(precision=14, scale=2), nullable=True),
         sa.Column("rate_pct", sa.Numeric(precision=6, scale=3), nullable=False),
         sa.Column("id", sa.Uuid(), nullable=False),
         sa.Column(
@@ -768,6 +769,7 @@ def upgrade() -> None:
                 "is_true",
                 "is_false",
                 "is_null",
+                "count_at_least",
                 name="criterion_operator",
                 native_enum=False,
                 create_constraint=True,
@@ -780,7 +782,7 @@ def upgrade() -> None:
         sa.Column(
             "actual_value", postgresql.JSONB(astext_type=sa.Text()), nullable=True
         ),
-        sa.Column("passed", sa.Boolean(), nullable=False),
+        sa.Column("passed", sa.Boolean(), nullable=True),
         sa.Column("explanation", sa.Text(), nullable=False),
         sa.Column("id", sa.Uuid(), nullable=False),
         sa.Column(

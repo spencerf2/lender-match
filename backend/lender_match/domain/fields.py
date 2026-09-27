@@ -172,6 +172,12 @@ EQUIPMENT_TYPES: tuple[str, ...] = (
 BUILT_IN_FIELDS: tuple[FieldDefinition, ...] = (
     # Guarantors. Several guarantors combine by the rule in the label.
     FieldDefinition(
+        key="guarantor.has_personal_guarantor",
+        label="Has a personal guarantor",
+        type=FieldType.boolean,
+        source=FieldSource.derived,
+    ),
+    FieldDefinition(
         key="guarantor.min_fico",
         label="Minimum FICO across guarantors",
         type=FieldType.integer,

@@ -94,17 +94,18 @@ class CriterionDraft(DomainModel):
 
 class RateBand(DomainModel):
     """The rate a program charges for one amount range, optionally
-    limited to one credit grade.
+    limited to one credit grade. No max_amount means the band has no
+    upper bound.
     """
 
     credit_grade: str | None = None
     min_amount: Decimal = Field(ge=0)
-    max_amount: Decimal = Field(ge=0)
+    max_amount: Decimal | None = Field(default=None, ge=0)
     rate_pct: Decimal = Field(ge=0)
 
     @model_validator(mode="after")
     def _check_range(self) -> "RateBand":
-        if self.min_amount > self.max_amount:
+        if self.max_amount is not None and self.min_amount > self.max_amount:
             raise ValueError("min_amount must not exceed max_amount")
         return self
 

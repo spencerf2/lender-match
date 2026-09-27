@@ -131,7 +131,7 @@ class CriterionResult(BaseTable):
     hard: Mapped[bool] = mapped_column(default=False)
     weight: Mapped[Decimal | None] = mapped_column(Numeric(6, 3))
     actual_value: Mapped[Any | None] = mapped_column(JSONB, nullable=True)
-    passed: Mapped[bool] = mapped_column(default=False)
+    passed: Mapped[bool | None]
     explanation: Mapped[str] = mapped_column(Text)
 
     program_result: Mapped["ProgramResult"] = relationship(

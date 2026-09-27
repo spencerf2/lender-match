@@ -158,7 +158,8 @@ def _estimated_rate(
     covering = [
         band.rate_pct
         for band in program.rates
-        if band.min_amount <= loan_amount <= band.max_amount
+        if band.min_amount <= loan_amount
+        and (band.max_amount is None or loan_amount <= band.max_amount)
     ]
     return min(covering, default=None)
 

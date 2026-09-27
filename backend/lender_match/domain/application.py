@@ -130,6 +130,11 @@ class ApplicationDraft(DomainModel):
 
     @computed_field
     @property
+    def has_personal_guarantor(self) -> bool:
+        return bool(self.guarantors)
+
+    @computed_field
+    @property
     def min_fico(self) -> int | None:
         ficos = [g.fico for g in self.guarantors if g.fico is not None]
         return min(ficos, default=None)
@@ -209,6 +214,7 @@ class ApplicationDraft(DomainModel):
     def built_in_field_values(self, as_of: date) -> dict[str, object]:
         """Every built-in application field's value, by field key."""
         return {
+            "guarantor.has_personal_guarantor": self.has_personal_guarantor,
             "guarantor.min_fico": self.min_fico,
             "guarantor.is_homeowner": self.is_homeowner,
             "guarantor.is_us_citizen": self.is_us_citizen,

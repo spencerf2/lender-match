@@ -140,7 +140,7 @@ class RateBand(BaseTable):
     )
     credit_grade: Mapped[str | None] = mapped_column(Text)
     min_amount: Mapped[Decimal] = mapped_column(Numeric(14, 2))
-    max_amount: Mapped[Decimal] = mapped_column(Numeric(14, 2))
+    max_amount: Mapped[Decimal | None] = mapped_column(Numeric(14, 2))
     rate_pct: Mapped[Decimal] = mapped_column(Numeric(6, 3))
 
     program: Mapped["Program"] = relationship(back_populates="rate_bands")
