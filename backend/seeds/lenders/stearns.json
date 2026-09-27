@@ -1,0 +1,836 @@
+{
+  "name": "Stearns Bank",
+  "source_effective_date": "2025-04-14",
+  "contacts": [
+    {
+      "name": "Credit Desk",
+      "role": "credit",
+      "email": "credit@example.com",
+      "phone": "555-0101"
+    }
+  ],
+  "programs": [
+    {
+      "name": "Tier 1",
+      "rank": 1,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Tier 1",
+          "position": 0
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 725,
+          "hard": true,
+          "source_quote": "FICO 725",
+          "position": 1
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 3,
+          "hard": true,
+          "source_quote": "TIB 3",
+          "position": 2
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 685,
+          "hard": true,
+          "source_quote": "Paynet 685",
+          "position": 3
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 7,
+          "hard": true,
+          "source_quote": "No BK in last 7 years",
+          "position": 4
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "gambling",
+            "hazmat",
+            "oil_and_gas",
+            "money_services",
+            "adult_entertainment",
+            "firearms",
+            "beauty_salon",
+            "tattoo_piercing",
+            "real_estate",
+            "trucking",
+            "restaurant",
+            "car_wash"
+          ],
+          "hard": true,
+          "source_quote": "Gaming/Gambling, Hazmat, Oil & Gas, MSBs, Adult Entertainment, Weapons/Firearms, Beauty/Tanning Salons, Tattoo/Piercing, Real Estate, OTR, Restaurants, Car Wash",
+          "position": 5
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Beauty/Tanning Salons",
+          "position": 6
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Non-Essential Use",
+          "position": 7
+        },
+        {
+          "field": "judgment.aesthetic_use",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Aesthetic",
+          "position": 8
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 2",
+      "rank": 2,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Tier 2",
+          "position": 0
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 710,
+          "hard": true,
+          "source_quote": "FICO 710",
+          "position": 1
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 3,
+          "hard": true,
+          "source_quote": "TIB 3",
+          "position": 2
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 675,
+          "hard": true,
+          "source_quote": "Paynet 675",
+          "position": 3
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 7,
+          "hard": true,
+          "source_quote": "No BK in last 7 years",
+          "position": 4
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "gambling",
+            "hazmat",
+            "oil_and_gas",
+            "money_services",
+            "adult_entertainment",
+            "firearms",
+            "beauty_salon",
+            "tattoo_piercing",
+            "real_estate",
+            "trucking",
+            "restaurant",
+            "car_wash"
+          ],
+          "hard": true,
+          "source_quote": "Gaming/Gambling, Hazmat, Oil & Gas, MSBs, Adult Entertainment, Weapons/Firearms, Beauty/Tanning Salons, Tattoo/Piercing, Real Estate, OTR, Restaurants, Car Wash",
+          "position": 5
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Beauty/Tanning Salons",
+          "position": 6
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Non-Essential Use",
+          "position": 7
+        },
+        {
+          "field": "judgment.aesthetic_use",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Aesthetic",
+          "position": 8
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 3",
+      "rank": 3,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Tier 3",
+          "position": 0
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 700,
+          "hard": true,
+          "source_quote": "FICO 700",
+          "position": 1
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 2,
+          "hard": true,
+          "source_quote": "TIB 2",
+          "position": 2
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 665,
+          "hard": true,
+          "source_quote": "Paynet 665",
+          "position": 3
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 7,
+          "hard": true,
+          "source_quote": "No BK in last 7 years",
+          "position": 4
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "gambling",
+            "hazmat",
+            "oil_and_gas",
+            "money_services",
+            "adult_entertainment",
+            "firearms",
+            "beauty_salon",
+            "tattoo_piercing",
+            "real_estate",
+            "trucking",
+            "restaurant",
+            "car_wash"
+          ],
+          "hard": true,
+          "source_quote": "Gaming/Gambling, Hazmat, Oil & Gas, MSBs, Adult Entertainment, Weapons/Firearms, Beauty/Tanning Salons, Tattoo/Piercing, Real Estate, OTR, Restaurants, Car Wash",
+          "position": 5
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Beauty/Tanning Salons",
+          "position": 6
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Non-Essential Use",
+          "position": 7
+        },
+        {
+          "field": "judgment.aesthetic_use",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Aesthetic",
+          "position": 8
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 1 (No PayNet)",
+      "rank": 1,
+      "criteria": [
+        {
+          "field": "business_credit.paynet",
+          "operator": "is_null",
+          "hard": true,
+          "source_quote": "If no Paynet:",
+          "position": 0
+        },
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Tier 1",
+          "position": 1
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 735,
+          "hard": true,
+          "source_quote": "FICO 735",
+          "position": 2
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "TIB 5",
+          "position": 3
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 7,
+          "hard": true,
+          "source_quote": "No BK in last 7 years",
+          "position": 4
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "gambling",
+            "hazmat",
+            "oil_and_gas",
+            "money_services",
+            "adult_entertainment",
+            "firearms",
+            "beauty_salon",
+            "tattoo_piercing",
+            "real_estate",
+            "trucking",
+            "restaurant",
+            "car_wash"
+          ],
+          "hard": true,
+          "source_quote": "Gaming/Gambling, Hazmat, Oil & Gas, MSBs, Adult Entertainment, Weapons/Firearms, Beauty/Tanning Salons, Tattoo/Piercing, Real Estate, OTR, Restaurants, Car Wash",
+          "position": 5
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Beauty/Tanning Salons",
+          "position": 6
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Non-Essential Use",
+          "position": 7
+        },
+        {
+          "field": "judgment.aesthetic_use",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Aesthetic",
+          "position": 8
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 2 (No PayNet)",
+      "rank": 2,
+      "criteria": [
+        {
+          "field": "business_credit.paynet",
+          "operator": "is_null",
+          "hard": true,
+          "source_quote": "If no Paynet:",
+          "position": 0
+        },
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Tier 2",
+          "position": 1
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 720,
+          "hard": true,
+          "source_quote": "FICO 720",
+          "position": 2
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 3,
+          "hard": true,
+          "source_quote": "TIB 3",
+          "position": 3
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 7,
+          "hard": true,
+          "source_quote": "No BK in last 7 years",
+          "position": 4
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "gambling",
+            "hazmat",
+            "oil_and_gas",
+            "money_services",
+            "adult_entertainment",
+            "firearms",
+            "beauty_salon",
+            "tattoo_piercing",
+            "real_estate",
+            "trucking",
+            "restaurant",
+            "car_wash"
+          ],
+          "hard": true,
+          "source_quote": "Gaming/Gambling, Hazmat, Oil & Gas, MSBs, Adult Entertainment, Weapons/Firearms, Beauty/Tanning Salons, Tattoo/Piercing, Real Estate, OTR, Restaurants, Car Wash",
+          "position": 5
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Beauty/Tanning Salons",
+          "position": 6
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Non-Essential Use",
+          "position": 7
+        },
+        {
+          "field": "judgment.aesthetic_use",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Aesthetic",
+          "position": 8
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 3 (No PayNet)",
+      "rank": 3,
+      "criteria": [
+        {
+          "field": "business_credit.paynet",
+          "operator": "is_null",
+          "hard": true,
+          "source_quote": "If no Paynet:",
+          "position": 0
+        },
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Tier 3",
+          "position": 1
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 710,
+          "hard": true,
+          "source_quote": "FICO 710",
+          "position": 2
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 2,
+          "hard": true,
+          "source_quote": "TIB 2",
+          "position": 3
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 7,
+          "hard": true,
+          "source_quote": "No BK in last 7 years",
+          "position": 4
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "gambling",
+            "hazmat",
+            "oil_and_gas",
+            "money_services",
+            "adult_entertainment",
+            "firearms",
+            "beauty_salon",
+            "tattoo_piercing",
+            "real_estate",
+            "trucking",
+            "restaurant",
+            "car_wash"
+          ],
+          "hard": true,
+          "source_quote": "Gaming/Gambling, Hazmat, Oil & Gas, MSBs, Adult Entertainment, Weapons/Firearms, Beauty/Tanning Salons, Tattoo/Piercing, Real Estate, OTR, Restaurants, Car Wash",
+          "position": 5
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Beauty/Tanning Salons",
+          "position": 6
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Non-Essential Use",
+          "position": 7
+        },
+        {
+          "field": "judgment.aesthetic_use",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Aesthetic",
+          "position": 8
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 1 (Corp Only)",
+      "rank": 1,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "If Corp only",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 10,
+          "hard": true,
+          "source_quote": "TIB 10",
+          "position": 1
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 700,
+          "hard": true,
+          "source_quote": "Paynet 700",
+          "position": 2
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 7,
+          "hard": true,
+          "source_quote": "No BK in last 7 years",
+          "position": 3
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "gambling",
+            "hazmat",
+            "oil_and_gas",
+            "money_services",
+            "adult_entertainment",
+            "firearms",
+            "beauty_salon",
+            "tattoo_piercing",
+            "real_estate",
+            "trucking",
+            "restaurant",
+            "car_wash"
+          ],
+          "hard": true,
+          "source_quote": "Gaming/Gambling, Hazmat, Oil & Gas, MSBs, Adult Entertainment, Weapons/Firearms, Beauty/Tanning Salons, Tattoo/Piercing, Real Estate, OTR, Restaurants, Car Wash",
+          "position": 4
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Beauty/Tanning Salons",
+          "position": 5
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Non-Essential Use",
+          "position": 6
+        },
+        {
+          "field": "judgment.aesthetic_use",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Aesthetic",
+          "position": 7
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 2 (Corp Only)",
+      "rank": 2,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "If Corp only",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "TIB 5",
+          "position": 1
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 690,
+          "hard": true,
+          "source_quote": "Paynet 690",
+          "position": 2
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 7,
+          "hard": true,
+          "source_quote": "No BK in last 7 years",
+          "position": 3
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "gambling",
+            "hazmat",
+            "oil_and_gas",
+            "money_services",
+            "adult_entertainment",
+            "firearms",
+            "beauty_salon",
+            "tattoo_piercing",
+            "real_estate",
+            "trucking",
+            "restaurant",
+            "car_wash"
+          ],
+          "hard": true,
+          "source_quote": "Gaming/Gambling, Hazmat, Oil & Gas, MSBs, Adult Entertainment, Weapons/Firearms, Beauty/Tanning Salons, Tattoo/Piercing, Real Estate, OTR, Restaurants, Car Wash",
+          "position": 4
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Beauty/Tanning Salons",
+          "position": 5
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Non-Essential Use",
+          "position": 6
+        },
+        {
+          "field": "judgment.aesthetic_use",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Aesthetic",
+          "position": 7
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 3 (Corp Only)",
+      "rank": 3,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "If Corp only",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "TIB 5",
+          "position": 1
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 680,
+          "hard": true,
+          "source_quote": "Paynet 680",
+          "position": 2
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 7,
+          "hard": true,
+          "source_quote": "No BK in last 7 years",
+          "position": 3
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "gambling",
+            "hazmat",
+            "oil_and_gas",
+            "money_services",
+            "adult_entertainment",
+            "firearms",
+            "beauty_salon",
+            "tattoo_piercing",
+            "real_estate",
+            "trucking",
+            "restaurant",
+            "car_wash"
+          ],
+          "hard": true,
+          "source_quote": "Gaming/Gambling, Hazmat, Oil & Gas, MSBs, Adult Entertainment, Weapons/Firearms, Beauty/Tanning Salons, Tattoo/Piercing, Real Estate, OTR, Restaurants, Car Wash",
+          "position": 4
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Beauty/Tanning Salons",
+          "position": 5
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Non-Essential Use",
+          "position": 6
+        },
+        {
+          "field": "judgment.aesthetic_use",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Aesthetic",
+          "position": 7
+        }
+      ],
+      "rates": []
+    }
+  ],
+  "notes": [
+    {
+      "kind": "unmapped",
+      "text": "Comp Debt: Any single open account equal to or greater than requested amount; Any single closed account within last 12 months equal to or greater than requested amount; 3 or more contracts ($10K minimum) with payment activity in the last 12 months"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Revolver Utilization: Personal revolving over $30K OR revolving + unsecured debt over $50K (excluding student loans)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Restriction: Foreign Country. No field says where the business is domiciled beyond its US state."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Restriction: No Physical Location. No field for a physical location."
+    },
+    {
+      "kind": "informational",
+      "text": "Restriction: OTR. The industry list has a single trucking value, so the criterion excludes all trucking, not only over-the-road."
+    },
+    {
+      "kind": "informational",
+      "text": "These are only guidelines and are subject to lender discretion."
+    },
+    {
+      "kind": "informational",
+      "text": "SUBJECT TO CREDIT APPROVAL/QUALIFICATIONS. SOME LIMITATIONS MAY APPLY. TERMS, CONDITIONS, APPLICABLE TAX, SHIPPING, INSURANCE AND CLOSING COSTS MAY APPLY. SUBJECT TO CHANGE WITHOUT NOTICE. MEMBER FDIC."
+    }
+  ]
+}

@@ -1,0 +1,1124 @@
+{
+  "name": "Apex Commercial Capital",
+  "source_effective_date": "2025-08-21",
+  "contacts": [
+    {
+      "name": "Pat Example",
+      "title": "Equipment Finance Contact",
+      "role": "relationship",
+      "email": "pat.example@example.com",
+      "phone": "555-0102"
+    },
+    {
+      "name": "Credit Desk",
+      "role": "application_submissions",
+      "email": "credit@example.com"
+    },
+    {
+      "name": "Documentation Desk",
+      "role": "document_requests",
+      "email": "docs@example.com"
+    },
+    {
+      "name": "Funding Desk",
+      "role": "funding_submissions",
+      "email": "funding@example.com"
+    }
+  ],
+  "programs": [
+    {
+      "name": "A+",
+      "rank": 1,
+      "app_only_max_amount": 200000,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "WITH PERSONAL GUARANTEE",
+          "position": 0
+        },
+        {
+          "field": "business.industry",
+          "operator": "in",
+          "value": [
+            "landscaping",
+            "automotive_repair",
+            "construction",
+            "commercial_cleaning",
+            "manufacturing",
+            "medical",
+            "waste_management"
+          ],
+          "hard": true,
+          "source_quote": "Arbor/Landscaping, Automotive Repair, Construction/Trade Contractors, Commercial/Industrial Cleaning, Medical/Dental/Veterinarian (5+ years established practice), Waste Management (no bins/containers)",
+          "position": 1
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "5 years time in business",
+          "position": 2
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 670,
+          "hard": true,
+          "source_quote": "670+ PayNet",
+          "position": 3
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 720,
+          "hard": true,
+          "source_quote": "720+ FICO",
+          "position": 4
+        },
+        {
+          "field": "loan.amount",
+          "operator": "between",
+          "value": [
+            10000,
+            500000
+          ],
+          "hard": true,
+          "source_quote": "$10,000 - $49,999 / $50,000 - $500,000",
+          "position": 5
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "between",
+          "value": [
+            24,
+            60
+          ],
+          "hard": true,
+          "source_quote": "24-60 months",
+          "position": 6
+        },
+        {
+          "field": "equipment.age_years",
+          "operator": "lte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "Max Age of Collateral = 5 years",
+          "position": 7
+        },
+        {
+          "field": "equipment.is_private_party_sale",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "No Private Party Sales",
+          "position": 8
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA",
+            "NV",
+            "ND",
+            "VT"
+          ],
+          "hard": true,
+          "source_quote": "Apex does not lend in: CA, NV, ND, VT",
+          "position": 9
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "aircraft",
+            "boat",
+            "atm",
+            "audio_visual_equipment",
+            "office_equipment",
+            "electric_vehicle",
+            "furniture",
+            "kiosk",
+            "leasehold_improvements",
+            "signage",
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Aircrafts/Boats, ATMs, Audio/Visual, Copiers, Electric Vehicles, Furniture, Kiosks, Leasehold Improvements, Signage, Tanning Beds",
+          "position": 10
+        },
+        {
+          "field": "judgment.fad_medical",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Fad Medical",
+          "position": 11
+        }
+      ],
+      "rates": [
+        {
+          "min_amount": 10000,
+          "max_amount": 49999,
+          "rate_pct": 6.75
+        },
+        {
+          "min_amount": 50000,
+          "max_amount": 500000,
+          "rate_pct": 6.5
+        }
+      ]
+    },
+    {
+      "name": "A",
+      "rank": 2,
+      "app_only_max_amount": 200000,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "WITH PERSONAL GUARANTEE",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "5 years time in business",
+          "position": 1
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 660,
+          "hard": true,
+          "source_quote": "660+ PayNet",
+          "position": 2
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 700,
+          "hard": true,
+          "source_quote": "700+ FICO",
+          "position": 3
+        },
+        {
+          "field": "loan.amount",
+          "operator": "between",
+          "value": [
+            10000,
+            500000
+          ],
+          "hard": true,
+          "source_quote": "$10,000 - $49,999 / $50,000 - $500,000",
+          "position": 4
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "between",
+          "value": [
+            24,
+            60
+          ],
+          "hard": true,
+          "source_quote": "24-60 months",
+          "position": 5
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA",
+            "NV",
+            "ND",
+            "VT"
+          ],
+          "hard": true,
+          "source_quote": "Apex does not lend in: CA, NV, ND, VT",
+          "position": 6
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "cannabis",
+            "gambling",
+            "religious_or_nonprofit",
+            "logging",
+            "beauty_salon",
+            "oil_and_gas",
+            "trucking"
+          ],
+          "hard": true,
+          "source_quote": "Cannabis, Casino/Gambling, Churches/Non-profits, Logging Equipment, Nail Salons, Petroleum Industry (Oil/Gas), Trucking (Local & Long Haul)",
+          "position": 7
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "aircraft",
+            "boat",
+            "atm",
+            "audio_visual_equipment",
+            "office_equipment",
+            "electric_vehicle",
+            "furniture",
+            "kiosk",
+            "leasehold_improvements",
+            "signage",
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Aircrafts/Boats, ATMs, Audio/Visual, Copiers, Electric Vehicles, Furniture, Kiosks, Leasehold Improvements, Signage, Tanning Beds",
+          "position": 8
+        },
+        {
+          "field": "equipment.age_years",
+          "operator": "lte",
+          "value": 15,
+          "hard": true,
+          "source_quote": "Equipment over 15 years old",
+          "position": 9
+        },
+        {
+          "field": "equipment.is_private_party_sale",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Private Party Sales",
+          "position": 10
+        },
+        {
+          "field": "judgment.fad_medical",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Fad Medical",
+          "position": 11
+        }
+      ],
+      "rates": [
+        {
+          "min_amount": 10000,
+          "max_amount": 49999,
+          "rate_pct": 7.75
+        },
+        {
+          "min_amount": 50000,
+          "max_amount": 500000,
+          "rate_pct": 7.25
+        }
+      ]
+    },
+    {
+      "name": "B",
+      "rank": 3,
+      "app_only_max_amount": 100000,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "WITH PERSONAL GUARANTEE",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 3,
+          "hard": true,
+          "source_quote": "3 years time in business",
+          "position": 1
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 650,
+          "hard": true,
+          "source_quote": "650+ PayNet",
+          "position": 2
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 670,
+          "hard": true,
+          "source_quote": "670+ FICO",
+          "position": 3
+        },
+        {
+          "field": "loan.amount",
+          "operator": "between",
+          "value": [
+            10000,
+            250000
+          ],
+          "hard": true,
+          "source_quote": "$10,000 - $49,999 / $50,000 - $250,000",
+          "position": 4
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "between",
+          "value": [
+            24,
+            60
+          ],
+          "hard": true,
+          "source_quote": "24-60 months",
+          "position": 5
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA",
+            "NV",
+            "ND",
+            "VT"
+          ],
+          "hard": true,
+          "source_quote": "Apex does not lend in: CA, NV, ND, VT",
+          "position": 6
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "cannabis",
+            "gambling",
+            "religious_or_nonprofit",
+            "logging",
+            "beauty_salon",
+            "oil_and_gas",
+            "trucking"
+          ],
+          "hard": true,
+          "source_quote": "Cannabis, Casino/Gambling, Churches/Non-profits, Logging Equipment, Nail Salons, Petroleum Industry (Oil/Gas), Trucking (Local & Long Haul)",
+          "position": 7
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "aircraft",
+            "boat",
+            "atm",
+            "audio_visual_equipment",
+            "office_equipment",
+            "electric_vehicle",
+            "furniture",
+            "kiosk",
+            "leasehold_improvements",
+            "signage",
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Aircrafts/Boats, ATMs, Audio/Visual, Copiers, Electric Vehicles, Furniture, Kiosks, Leasehold Improvements, Signage, Tanning Beds",
+          "position": 8
+        },
+        {
+          "field": "equipment.age_years",
+          "operator": "lte",
+          "value": 15,
+          "hard": true,
+          "source_quote": "Equipment over 15 years old",
+          "position": 9
+        },
+        {
+          "field": "equipment.is_private_party_sale",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Private Party Sales",
+          "position": 10
+        },
+        {
+          "field": "judgment.fad_medical",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Fad Medical",
+          "position": 11
+        }
+      ],
+      "rates": [
+        {
+          "min_amount": 10000,
+          "max_amount": 49999,
+          "rate_pct": 8.75
+        },
+        {
+          "min_amount": 50000,
+          "max_amount": 250000,
+          "rate_pct": 8.25
+        }
+      ]
+    },
+    {
+      "name": "C",
+      "rank": 4,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "WITH PERSONAL GUARANTEE",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 2,
+          "hard": true,
+          "source_quote": "2 years time in business",
+          "position": 1
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 640,
+          "hard": true,
+          "source_quote": "640+ PayNet",
+          "position": 2
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 640,
+          "hard": true,
+          "source_quote": "640+ FICO",
+          "position": 3
+        },
+        {
+          "field": "loan.amount",
+          "operator": "between",
+          "value": [
+            10000,
+            100000
+          ],
+          "hard": true,
+          "source_quote": "$10,000 - $49,999 / $50,000 - $100,000",
+          "position": 4
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "between",
+          "value": [
+            24,
+            60
+          ],
+          "hard": true,
+          "source_quote": "24-60 months",
+          "position": 5
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA",
+            "NV",
+            "ND",
+            "VT"
+          ],
+          "hard": true,
+          "source_quote": "Apex does not lend in: CA, NV, ND, VT",
+          "position": 6
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "cannabis",
+            "gambling",
+            "religious_or_nonprofit",
+            "logging",
+            "beauty_salon",
+            "oil_and_gas",
+            "trucking"
+          ],
+          "hard": true,
+          "source_quote": "Cannabis, Casino/Gambling, Churches/Non-profits, Logging Equipment, Nail Salons, Petroleum Industry (Oil/Gas), Trucking (Local & Long Haul)",
+          "position": 7
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "aircraft",
+            "boat",
+            "atm",
+            "audio_visual_equipment",
+            "office_equipment",
+            "electric_vehicle",
+            "furniture",
+            "kiosk",
+            "leasehold_improvements",
+            "signage",
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Aircrafts/Boats, ATMs, Audio/Visual, Copiers, Electric Vehicles, Furniture, Kiosks, Leasehold Improvements, Signage, Tanning Beds",
+          "position": 8
+        },
+        {
+          "field": "equipment.age_years",
+          "operator": "lte",
+          "value": 15,
+          "hard": true,
+          "source_quote": "Equipment over 15 years old",
+          "position": 9
+        },
+        {
+          "field": "equipment.is_private_party_sale",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Private Party Sales",
+          "position": 10
+        },
+        {
+          "field": "judgment.fad_medical",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Fad Medical",
+          "position": 11
+        }
+      ],
+      "rates": [
+        {
+          "min_amount": 10000,
+          "max_amount": 49999,
+          "rate_pct": 12.0
+        },
+        {
+          "min_amount": 50000,
+          "max_amount": 100000,
+          "rate_pct": 11.0
+        }
+      ]
+    },
+    {
+      "name": "Medical A",
+      "app_only_max_amount": 200000,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "WITH PERSONAL GUARANTEE",
+          "position": 0
+        },
+        {
+          "field": "business.industry",
+          "operator": "in",
+          "value": [
+            "medical"
+          ],
+          "hard": true,
+          "source_quote": "MEDICAL PRICING GUIDELINES",
+          "position": 1
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "5 years time licensed",
+          "position": 2
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 700,
+          "hard": true,
+          "source_quote": "700+ FICO",
+          "position": 3
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Essential use equipment for the practice.",
+          "position": 4
+        },
+        {
+          "field": "loan.amount",
+          "operator": "between",
+          "value": [
+            10000,
+            500000
+          ],
+          "hard": true,
+          "source_quote": "$10,000 - $49,999 / $50,000 - $500,000",
+          "position": 5
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "between",
+          "value": [
+            24,
+            60
+          ],
+          "hard": true,
+          "source_quote": "24-60 months",
+          "position": 6
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA",
+            "NV",
+            "ND",
+            "VT"
+          ],
+          "hard": true,
+          "source_quote": "Apex does not lend in: CA, NV, ND, VT",
+          "position": 7
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "aircraft",
+            "boat",
+            "atm",
+            "audio_visual_equipment",
+            "office_equipment",
+            "electric_vehicle",
+            "furniture",
+            "kiosk",
+            "leasehold_improvements",
+            "signage",
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Aircrafts/Boats, ATMs, Audio/Visual, Copiers, Electric Vehicles, Furniture, Kiosks, Leasehold Improvements, Signage, Tanning Beds",
+          "position": 8
+        },
+        {
+          "field": "equipment.age_years",
+          "operator": "lte",
+          "value": 15,
+          "hard": true,
+          "source_quote": "Equipment over 15 years old",
+          "position": 9
+        },
+        {
+          "field": "equipment.is_private_party_sale",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Private Party Sales",
+          "position": 10
+        },
+        {
+          "field": "judgment.fad_medical",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Fad Medical",
+          "position": 11
+        }
+      ],
+      "rates": [
+        {
+          "min_amount": 10000,
+          "max_amount": 49999,
+          "rate_pct": 7.25
+        },
+        {
+          "min_amount": 50000,
+          "max_amount": 500000,
+          "rate_pct": 7.0
+        }
+      ]
+    },
+    {
+      "name": "Medical B",
+      "app_only_max_amount": 100000,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "WITH PERSONAL GUARANTEE",
+          "position": 0
+        },
+        {
+          "field": "business.industry",
+          "operator": "in",
+          "value": [
+            "medical"
+          ],
+          "hard": true,
+          "source_quote": "MEDICAL PRICING GUIDELINES",
+          "position": 1
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 2,
+          "hard": true,
+          "source_quote": "2 years time licensed",
+          "position": 2
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 670,
+          "hard": true,
+          "source_quote": "670+ FICO",
+          "position": 3
+        },
+        {
+          "field": "judgment.essential_use",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Essential use equipment for the practice.",
+          "position": 4
+        },
+        {
+          "field": "loan.amount",
+          "operator": "between",
+          "value": [
+            10000,
+            250000
+          ],
+          "hard": true,
+          "source_quote": "$10,000 - $49,999 / $50,000 - $250,000",
+          "position": 5
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "between",
+          "value": [
+            24,
+            60
+          ],
+          "hard": true,
+          "source_quote": "24-60 months",
+          "position": 6
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA",
+            "NV",
+            "ND",
+            "VT"
+          ],
+          "hard": true,
+          "source_quote": "Apex does not lend in: CA, NV, ND, VT",
+          "position": 7
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "aircraft",
+            "boat",
+            "atm",
+            "audio_visual_equipment",
+            "office_equipment",
+            "electric_vehicle",
+            "furniture",
+            "kiosk",
+            "leasehold_improvements",
+            "signage",
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Aircrafts/Boats, ATMs, Audio/Visual, Copiers, Electric Vehicles, Furniture, Kiosks, Leasehold Improvements, Signage, Tanning Beds",
+          "position": 8
+        },
+        {
+          "field": "equipment.age_years",
+          "operator": "lte",
+          "value": 15,
+          "hard": true,
+          "source_quote": "Equipment over 15 years old",
+          "position": 9
+        },
+        {
+          "field": "equipment.is_private_party_sale",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Private Party Sales",
+          "position": 10
+        },
+        {
+          "field": "judgment.fad_medical",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Fad Medical",
+          "position": 11
+        }
+      ],
+      "rates": [
+        {
+          "min_amount": 10000,
+          "max_amount": 49999,
+          "rate_pct": 8.0
+        },
+        {
+          "min_amount": 50000,
+          "max_amount": 250000,
+          "rate_pct": 7.5
+        }
+      ]
+    },
+    {
+      "name": "Corp Only",
+      "notes": "7.00% Buy Rate",
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Corp. Only Guidelines",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "Must be in business a minimum of 5 years",
+          "position": 1
+        },
+        {
+          "field": "business.annual_revenue",
+          "operator": "gte",
+          "value": 3000000,
+          "hard": true,
+          "source_quote": "Annual sales must be at least $3MM",
+          "position": 2
+        },
+        {
+          "field": "business_credit.comparable_credit_ratio",
+          "operator": "gte",
+          "value": 0.75,
+          "hard": true,
+          "source_quote": "Comparable business credit (75% of amount being requested)",
+          "position": 3
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA",
+            "NV",
+            "ND",
+            "VT"
+          ],
+          "hard": true,
+          "source_quote": "Apex does not lend in: CA, NV, ND, VT",
+          "position": 4
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "cannabis",
+            "gambling",
+            "religious_or_nonprofit",
+            "logging",
+            "beauty_salon",
+            "oil_and_gas",
+            "trucking"
+          ],
+          "hard": true,
+          "source_quote": "Cannabis, Casino/Gambling, Churches/Non-profits, Logging Equipment, Nail Salons, Petroleum Industry (Oil/Gas), Trucking (Local & Long Haul)",
+          "position": 5
+        },
+        {
+          "field": "equipment.type",
+          "operator": "not_in",
+          "value": [
+            "aircraft",
+            "boat",
+            "atm",
+            "audio_visual_equipment",
+            "office_equipment",
+            "electric_vehicle",
+            "furniture",
+            "kiosk",
+            "leasehold_improvements",
+            "signage",
+            "tanning_bed"
+          ],
+          "hard": true,
+          "source_quote": "Aircrafts/Boats, ATMs, Audio/Visual, Copiers, Electric Vehicles, Furniture, Kiosks, Leasehold Improvements, Signage, Tanning Beds",
+          "position": 6
+        },
+        {
+          "field": "equipment.age_years",
+          "operator": "lte",
+          "value": 15,
+          "hard": true,
+          "source_quote": "Equipment over 15 years old",
+          "position": 7
+        },
+        {
+          "field": "equipment.is_private_party_sale",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Private Party Sales",
+          "position": 8
+        },
+        {
+          "field": "judgment.fad_medical",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Fad Medical",
+          "position": 9
+        }
+      ],
+      "rates": [
+        {
+          "min_amount": 0,
+          "max_amount": null,
+          "rate_pct": 7.0
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "kind": "unmapped",
+      "text": "Comparable business borrowing required for requests $50,000 - $100,000 (50% of amount being requested); Comparable business borrowing required for requests over $100,000 (75% of amount being requested)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "25% Max soft costs"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Excluded: Sale-Leasebacks"
+    },
+    {
+      "kind": "unmapped",
+      "text": "50% revolving available (A+, A, B, Medical A, Medical B). No field for revolving credit availability."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Financial statements must show profitability, acceptable leverage, and adequate cash flow",
+      "program": "Corp Only"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Comparable business credit (75% of amount being requested) reporting on business credit reports as paid as agreed. The criterion covers the ratio; 'paid as agreed' has no field.",
+      "program": "Corp Only"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Eligible Industries/Equipment Types also lists equipment: Forklifts and Vocational Trucks. Criteria cannot express industry-or-equipment, so those qualify only when the buyer's industry is in the list.",
+      "program": "A+"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Industrial Machinery and Machine Tools were folded into the manufacturing industry, which the document does not list by name.",
+      "program": "A+"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Waste Management (no bins/containers)",
+      "program": "A+"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Healthcare license(s) active and in good standing with no significant or recent disciplinary actions",
+      "program": "Medical A"
+    },
+    {
+      "kind": "unmapped",
+      "text": "The practice must be owned by a licensed MD, DO, DMD, DDS, OD, DPM, DVM, VMD or verifiable specialist.",
+      "program": "Medical A"
+    },
+    {
+      "kind": "unmapped",
+      "text": "5 years time licensed: the document means the practitioner's license tenure. The criterion uses business.years_in_business, which measures the business's age.",
+      "program": "Medical A"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Healthcare license(s) active and in good standing with no significant or recent disciplinary actions",
+      "program": "Medical B"
+    },
+    {
+      "kind": "unmapped",
+      "text": "The practice must be owned by a licensed MD, DO, DMD, DDS, OD, DPM, DVM, VMD or verifiable specialist.",
+      "program": "Medical B"
+    },
+    {
+      "kind": "unmapped",
+      "text": "2 years time licensed: the document means the practitioner's license tenure. The criterion uses business.years_in_business, which measures the business's age.",
+      "program": "Medical B"
+    },
+    {
+      "kind": "informational",
+      "text": "Signed credit application (dated within 30 days)"
+    },
+    {
+      "kind": "informational",
+      "text": "Copy of equipment quote/invoice (preferred)"
+    },
+    {
+      "kind": "informational",
+      "text": "Pricing increase of +.50% to 1.00% for weaker collateral"
+    },
+    {
+      "kind": "informational",
+      "text": "90 days deferred available for A Credit customers"
+    },
+    {
+      "kind": "informational",
+      "text": "Max Commission*: 15 points on deals $10,000 - $99,999; 10 points on deals $100,000 - $199,999; 6 points on deals $200,000+. *Points exceeding the amounts listed above will be split between Apex and the Broker"
+    },
+    {
+      "kind": "informational",
+      "text": "2 years of Tax Returns or Accountant Prepared Financials and 3 Months of Bank Statements required over $200,000",
+      "program": "A+"
+    },
+    {
+      "kind": "informational",
+      "text": "Max commission: 8 points on deals $10,000 - $49,999; 6 points on deals $50,000 - $500,000",
+      "program": "A+"
+    },
+    {
+      "kind": "informational",
+      "text": "Don’t see an industry or equipment that you would like us to consider for this pricing? Please call to discuss.",
+      "program": "A+"
+    },
+    {
+      "kind": "informational",
+      "text": "2 years of Tax Returns or Accountant Prepared Financials and 3 Months of Bank Statements required over $200,000",
+      "program": "A"
+    },
+    {
+      "kind": "informational",
+      "text": "2 years of Tax Returns or Accountant Prepared Financials and 3 Months of Bank Statements required over $100,000",
+      "program": "B"
+    },
+    {
+      "kind": "informational",
+      "text": "3 months bank statements required with submission",
+      "program": "C"
+    },
+    {
+      "kind": "informational",
+      "text": "2 years of Tax Returns or Accountant Prepared Financials and 3 Months of Bank Statements required over $200,000",
+      "program": "Medical A"
+    },
+    {
+      "kind": "informational",
+      "text": "2 years of Tax Returns or Accountant Prepared Financials and 3 Months of Bank Statements required over $100,000",
+      "program": "Medical B"
+    },
+    {
+      "kind": "informational",
+      "text": "Provide 2 years business tax returns or accountant prepared financials; Provide the last 3 months of full business bank statements",
+      "program": "Corp Only"
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "name": "Falcon Equipment Finance",
+  "source_effective_date": "2025-11-01",
+  "contacts": [
+    {
+      "name": "Alex Example",
+      "title": "Account Manager",
+      "role": "relationship",
+      "email": "alex.example@example.com",
+      "phone": "555-0105"
+    }
+  ],
+  "programs": [
+    {
+      "name": "Standard",
+      "criteria": [
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "trucking"
+          ],
+          "hard": true,
+          "source_quote": "All Trucking",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 3,
+          "hard": true,
+          "source_quote": "3+ Years in business—references verified",
+          "position": 1
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 680,
+          "hard": true,
+          "source_quote": "Minimum FICO Requirement 680+",
+          "position": 2
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 660,
+          "hard": true,
+          "source_quote": "Minimum PayNet Requirement 660+",
+          "position": 3
+        },
+        {
+          "field": "business_credit.comparable_credit_ratio",
+          "operator": "gte",
+          "value": 0.7,
+          "hard": true,
+          "source_quote": "Comparable commercial installment credit repayment at least 70% of the requested amount",
+          "position": 4
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 15,
+          "hard": true,
+          "source_quote": "Bankruptcies dismissed or discharged 15+ years ago",
+          "position": 5
+        }
+      ],
+      "rates": [
+        {
+          "credit_grade": "A",
+          "min_amount": 15000,
+          "max_amount": 50000,
+          "rate_pct": 9.0
+        },
+        {
+          "credit_grade": "A",
+          "min_amount": 50001,
+          "max_amount": 150000,
+          "rate_pct": 8.25
+        },
+        {
+          "credit_grade": "A",
+          "min_amount": 150001,
+          "max_amount": null,
+          "rate_pct": 7.75
+        },
+        {
+          "credit_grade": "B",
+          "min_amount": 15000,
+          "max_amount": 50000,
+          "rate_pct": 9.75
+        },
+        {
+          "credit_grade": "B",
+          "min_amount": 50001,
+          "max_amount": 150000,
+          "rate_pct": 9.0
+        },
+        {
+          "credit_grade": "B",
+          "min_amount": 150001,
+          "max_amount": null,
+          "rate_pct": 8.25
+        },
+        {
+          "credit_grade": "C",
+          "min_amount": 15000,
+          "max_amount": 50000,
+          "rate_pct": 10.5
+        },
+        {
+          "credit_grade": "C",
+          "min_amount": 50001,
+          "max_amount": 150000,
+          "rate_pct": 10.0
+        },
+        {
+          "credit_grade": "C",
+          "min_amount": 150001,
+          "max_amount": null,
+          "rate_pct": 9.0
+        },
+        {
+          "credit_grade": "D",
+          "min_amount": 15000,
+          "max_amount": 50000,
+          "rate_pct": 11.75
+        },
+        {
+          "credit_grade": "D",
+          "min_amount": 50001,
+          "max_amount": 150000,
+          "rate_pct": 11.0
+        },
+        {
+          "credit_grade": "D",
+          "min_amount": 150001,
+          "max_amount": null,
+          "rate_pct": 10.0
+        },
+        {
+          "credit_grade": "E",
+          "min_amount": 15000,
+          "max_amount": 50000,
+          "rate_pct": 13.75
+        },
+        {
+          "credit_grade": "E",
+          "min_amount": 50001,
+          "max_amount": 150000,
+          "rate_pct": 13.0
+        },
+        {
+          "credit_grade": "E",
+          "min_amount": 150001,
+          "max_amount": null,
+          "rate_pct": 12.0
+        }
+      ]
+    },
+    {
+      "name": "Trucking",
+      "app_only_max_amount": 150000,
+      "criteria": [
+        {
+          "field": "business.industry",
+          "operator": "in",
+          "value": [
+            "trucking"
+          ],
+          "hard": true,
+          "source_quote": "All Trucking",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "Must have 5+ years in business",
+          "position": 1
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 700,
+          "hard": true,
+          "source_quote": "700 FICO score or better",
+          "position": 2
+        },
+        {
+          "field": "business_credit.paynet",
+          "operator": "gte",
+          "value": 680,
+          "hard": true,
+          "source_quote": "680 or better Paynet Masterscore",
+          "position": 3
+        },
+        {
+          "field": "equipment.age_years",
+          "operator": "lte",
+          "value": 10,
+          "hard": true,
+          "source_quote": "Class 8 trucks and trailers need to be 10 years and newer",
+          "position": 4
+        },
+        {
+          "field": "business_credit.comparable_credit_ratio",
+          "operator": "gte",
+          "value": 0.7,
+          "hard": true,
+          "source_quote": "Comparable commercial installment credit repayment at least 70% of the requested amount",
+          "position": 5
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 15,
+          "hard": true,
+          "source_quote": "Bankruptcies dismissed or discharged 15+ years ago",
+          "position": 6
+        }
+      ],
+      "rates": [
+        {
+          "credit_grade": "A",
+          "min_amount": 15000,
+          "max_amount": 50000,
+          "rate_pct": 9.0
+        },
+        {
+          "credit_grade": "A",
+          "min_amount": 50001,
+          "max_amount": 150000,
+          "rate_pct": 8.25
+        },
+        {
+          "credit_grade": "A",
+          "min_amount": 150001,
+          "max_amount": null,
+          "rate_pct": 7.75
+        },
+        {
+          "credit_grade": "B",
+          "min_amount": 15000,
+          "max_amount": 50000,
+          "rate_pct": 9.75
+        },
+        {
+          "credit_grade": "B",
+          "min_amount": 50001,
+          "max_amount": 150000,
+          "rate_pct": 9.0
+        },
+        {
+          "credit_grade": "B",
+          "min_amount": 150001,
+          "max_amount": null,
+          "rate_pct": 8.25
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "kind": "unmapped",
+      "text": "App only up to $150,000 on all trucking and logging related industries"
+    },
+    {
+      "kind": "unmapped",
+      "text": "App only up to $250,000 on all Commercial related Transactions"
+    },
+    {
+      "kind": "unmapped",
+      "text": "App only up to $350,000 on all Manufacturing related Transactions (Machine Tools, Woodworking)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "App only to increase up to $100,000 more for customers with 12+ months of current clean payment history, maxing out at $350,000 (ie trucking up to $250,000)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "All Trucking: A/B CREDITS ONLY. No credit-grade field; the program's rate bands hold only the A and B rows.",
+      "program": "Trucking"
+    },
+    {
+      "kind": "unmapped",
+      "text": "They are currently operating 5+ trucks",
+      "program": "Trucking"
+    },
+    {
+      "kind": "unmapped",
+      "text": "reefer trailers under 7 years old. The age criterion holds the 10-year Class 8 limit; the reefer limit depends on equipment type.",
+      "program": "Trucking"
+    },
+    {
+      "kind": "informational",
+      "text": "3+ Years in business—references verified"
+    },
+    {
+      "kind": "informational",
+      "text": "Buy rate adjustments added to approvals: Private party sale +1.00%"
+    },
+    {
+      "kind": "informational",
+      "text": "Buy rate adjustments added to approvals: Titled assets + 0.50%"
+    },
+    {
+      "kind": "informational",
+      "text": "Buy rate adjustments added to approvals: Aged Equipment - for every 15 years +0.50%"
+    },
+    {
+      "kind": "informational",
+      "text": "$14,999 and below - call for rates"
+    },
+    {
+      "kind": "informational",
+      "text": "Soft collateral rates are determined on market basis"
+    },
+    {
+      "kind": "informational",
+      "text": "Subject to credit approval. Rates and Payment Factors are subject to change at any time. Examples are estimates."
+    }
+  ]
+}

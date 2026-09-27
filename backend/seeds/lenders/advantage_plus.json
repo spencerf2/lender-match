@@ -1,0 +1,335 @@
+{
+  "name": "Advantage+ Financing",
+  "source_effective_date": "2025-06-11",
+  "contacts": [
+    {
+      "name": "Sales Support",
+      "role": "application_submissions",
+      "email": "salessupport@example.com",
+      "phone": "555-0103"
+    }
+  ],
+  "programs": [
+    {
+      "name": "Non-Trucking",
+      "criteria": [
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "trucking"
+          ],
+          "hard": true,
+          "source_quote": "Non-Trucking Applications",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 2,
+          "hard": true,
+          "source_quote": "2 years or more in business",
+          "position": 1
+        },
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "each PG",
+          "position": 2
+        },
+        {
+          "field": "loan.amount",
+          "operator": "lte",
+          "value": 75000,
+          "hard": true,
+          "source_quote": "≤$75,000",
+          "position": 3
+        },
+        {
+          "field": "loan.amount",
+          "operator": "gte",
+          "value": 10000,
+          "hard": true,
+          "source_quote": "$10,000 loan minimum",
+          "position": 4
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 680,
+          "hard": true,
+          "source_quote": "680 FICO v5 (Equifax)",
+          "position": 5
+        },
+        {
+          "field": "loan.down_payment_pct",
+          "operator": "gte",
+          "value": 0.1,
+          "hard": true,
+          "source_quote": "10% down",
+          "position": 6
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "lte",
+          "value": 60,
+          "hard": true,
+          "source_quote": "What is the maximum loan term (in months)? 60",
+          "position": 7
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "is_null",
+          "hard": true,
+          "source_quote": "Do you finance bankruptcies? If so, how long after it has been discharged are customers eligible? No",
+          "position": 8
+        },
+        {
+          "field": "guarantor.has_judgments",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Do you extend credit with judgements in the history? No",
+          "position": 9
+        },
+        {
+          "field": "guarantor.has_foreclosures",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Do you extend credit with foreclosures in the history? No",
+          "position": 10
+        },
+        {
+          "field": "guarantor.has_repossessions",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Do you extend credit with repossessions in the history? No",
+          "position": 11
+        },
+        {
+          "field": "guarantor.is_us_citizen",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "US Citizen only",
+          "position": 12
+        },
+        {
+          "field": "business_credit.comparable_credit_ratio",
+          "operator": "gte",
+          "value": 0.8,
+          "hard": false,
+          "weight": 0.5,
+          "source_quote": "80% comparable credit",
+          "position": 13
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 7,
+          "hard": false,
+          "weight": 0.5,
+          "source_quote": "Prefer 7 years’ trade history",
+          "position": 14
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Non-Trucking Start-Up",
+      "criteria": [
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "trucking"
+          ],
+          "hard": true,
+          "source_quote": "Non-Trucking Applications",
+          "position": 0
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "lte",
+          "value": 2,
+          "hard": true,
+          "source_quote": "Do you do startup businesses? Yes.",
+          "position": 1
+        },
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "each PG",
+          "position": 2
+        },
+        {
+          "field": "loan.amount",
+          "operator": "lte",
+          "value": 75000,
+          "hard": true,
+          "source_quote": "≤$75,000",
+          "position": 3
+        },
+        {
+          "field": "loan.amount",
+          "operator": "gte",
+          "value": 10000,
+          "hard": true,
+          "source_quote": "$10,000 loan minimum",
+          "position": 4
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 700,
+          "hard": true,
+          "source_quote": "700+ for Start-Ups",
+          "position": 5
+        },
+        {
+          "field": "loan.down_payment_pct",
+          "operator": "gte",
+          "value": 0.1,
+          "hard": true,
+          "source_quote": "10% down",
+          "position": 6
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "lte",
+          "value": 60,
+          "hard": true,
+          "source_quote": "What is the maximum loan term (in months)? 60",
+          "position": 7
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "is_null",
+          "hard": true,
+          "source_quote": "Do you finance bankruptcies? If so, how long after it has been discharged are customers eligible? No",
+          "position": 8
+        },
+        {
+          "field": "guarantor.has_judgments",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Do you extend credit with judgements in the history? No",
+          "position": 9
+        },
+        {
+          "field": "guarantor.has_foreclosures",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Do you extend credit with foreclosures in the history? No",
+          "position": 10
+        },
+        {
+          "field": "guarantor.has_repossessions",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Do you extend credit with repossessions in the history? No",
+          "position": 11
+        },
+        {
+          "field": "guarantor.is_us_citizen",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "US Citizen only",
+          "position": 12
+        },
+        {
+          "field": "business_credit.comparable_credit_ratio",
+          "operator": "gte",
+          "value": 0.8,
+          "hard": false,
+          "weight": 0.5,
+          "source_quote": "80% comparable credit",
+          "position": 13
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 7,
+          "hard": false,
+          "weight": 0.5,
+          "source_quote": "Prefer 7 years’ trade history",
+          "position": 14
+        }
+      ],
+      "rates": []
+    }
+  ],
+  "notes": [
+    {
+      "kind": "unmapped",
+      "text": "additional 10% security deposit for Start-Ups",
+      "program": "Non-Trucking Start-Up"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Prefer 7 years’ trade history: the document means credit-report trade history. The soft criterion uses business.years_in_business, which measures the business's age."
+    },
+    {
+      "kind": "informational",
+      "text": "The 2-year line between the two programs is inferred from \"Not required for applicants with 2 years or more in business\"; the document does not define start-up."
+    },
+    {
+      "kind": "informational",
+      "text": "If the application is for a Start-Up, prior year personal taxes will likely be required.",
+      "program": "Non-Trucking Start-Up"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Minimum industry experience (years)? 3 years"
+    },
+    {
+      "kind": "unmapped",
+      "text": "No tax liens. No collections or charge-offs in the past 3 years."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Prefer secondary source(s) of income: working spouse/PG, pension, etc."
+    },
+    {
+      "kind": "informational",
+      "text": "Do you do startup businesses? Yes."
+    },
+    {
+      "kind": "informational",
+      "text": "Credit Range (ABCD): A to B-"
+    },
+    {
+      "kind": "informational",
+      "text": "What is maximum collateral age (years)? No age restrictions"
+    },
+    {
+      "kind": "informational",
+      "text": "What is the maximum mileage on a vehicle? No mileage restrictions"
+    },
+    {
+      "kind": "informational",
+      "text": "Expected submission to decision turn-around time? 1 business day"
+    },
+    {
+      "kind": "informational",
+      "text": "Do you require financials? May need 4 months’ bank statements, and/or Personal Financial Statement for each PG."
+    },
+    {
+      "kind": "informational",
+      "text": "Do you require tax returns? Not required for applicants with 2 years or more in business unless credit history is limited or has issues.",
+      "program": "Non-Trucking"
+    },
+    {
+      "kind": "informational",
+      "text": "Are Broker points/markups built into the funding amount? Yes"
+    },
+    {
+      "kind": "informational",
+      "text": "Do you accept DocuSign? Yes"
+    },
+    {
+      "kind": "informational",
+      "text": "Underwriting Call is made on every application prior to final approval."
+    }
+  ]
+}

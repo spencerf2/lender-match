@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "key": "judgment.essential_use",
+    "question": "Is this equipment essential to the day-to-day operation of this business?",
+    "output_type": "yes_no"
+  },
+  {
+    "key": "judgment.aesthetic_use",
+    "question": "Is this equipment, or the business buying it, mainly for elective aesthetic or cosmetic services, such as a med spa, cosmetic lasers, or body contouring?",
+    "output_type": "yes_no"
+  },
+  {
+    "key": "judgment.fad_medical",
+    "question": "Is the equipment a fad or trend-driven medical device rather than established, standard-of-care medical technology?",
+    "output_type": "yes_no"
+  }
+]

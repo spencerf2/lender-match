@@ -1,0 +1,639 @@
+{
+  "name": "Citizens Bank",
+  "source_effective_date": null,
+  "contacts": [
+    {
+      "name": "Sam Example",
+      "title": "Equipment Finance Contact",
+      "role": "relationship",
+      "email": "sam.example@example.com",
+      "phone": "555-0104"
+    }
+  ],
+  "programs": [
+    {
+      "name": "Tier 1 (General Program)",
+      "rank": 1,
+      "app_only_max_amount": 75000,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "must PG",
+          "position": 0
+        },
+        {
+          "field": "loan.amount",
+          "operator": "lte",
+          "value": 75000,
+          "hard": true,
+          "source_quote": "$75,000 ALL IN (Total Relationship)",
+          "position": 1
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 2,
+          "hard": true,
+          "source_quote": "2 years time in business",
+          "position": 2
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 700,
+          "hard": true,
+          "source_quote": "700+ Transunion Credit Score",
+          "position": 3
+        },
+        {
+          "field": "guarantor.is_homeowner",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Homeownership required",
+          "position": 4
+        },
+        {
+          "field": "guarantor.is_us_citizen",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Customers must be US Citizen.",
+          "position": 5
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA"
+          ],
+          "hard": true,
+          "source_quote": "Citizens Bank will no longer provide financing for applicants/ dealers in the State of California.",
+          "position": 6
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "cannabis"
+          ],
+          "hard": true,
+          "source_quote": "Cannabis related equipment/businesses are not desired.",
+          "position": 7
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "Applicants with previous bankruptcy must be over 5 years' discharged.",
+          "position": 8
+        },
+        {
+          "field": "equipment.type",
+          "operator": "in",
+          "value": [
+            "class_8_truck",
+            "class_8_trailer",
+            "reefer_trailer",
+            "dump_truck",
+            "medium_duty_truck",
+            "light_duty_truck",
+            "construction_equipment",
+            "automotive_repair_equipment",
+            "office_equipment",
+            "restaurant_equipment",
+            "lawn_and_turf_equipment",
+            "farm_equipment",
+            "audio_visual_equipment",
+            "medical_equipment",
+            "janitorial_equipment",
+            "machine_tool",
+            "forklift",
+            "vocational_truck"
+          ],
+          "hard": true,
+          "source_quote": "Class 8 Truck, Class 8 Trailers, Dump Truck, Medium Duty Trucks, Light Duty Trucks, Construction Equipment, Automotive Repair Equipment, Copy Machines/Office Equipment, Restaurant Equipment (Approved Franchise Only), Commercial Lawn/Turf Equipment, Farm Equipment, Audio/Visual Equipment, Medical Equipment (must be medical doctor), Janitorial Equipment, Machine Tools, Material Handling Equipment",
+          "position": 9
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "between",
+          "value": [
+            24,
+            60
+          ],
+          "hard": true,
+          "source_quote": "24-60 months",
+          "position": 10
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 2 (Start up Program)",
+      "rank": 2,
+      "app_only_max_amount": 50000,
+      "criteria": [
+        {
+          "field": "business.years_in_business",
+          "operator": "lte",
+          "value": 2,
+          "hard": true,
+          "source_quote": "Start up Program",
+          "position": 0
+        },
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "will be required to guaranty the transaction",
+          "position": 1
+        },
+        {
+          "field": "loan.amount",
+          "operator": "lte",
+          "value": 50000,
+          "hard": true,
+          "source_quote": "$50,000 ALL IN (Total Relationship)",
+          "position": 2
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 700,
+          "hard": true,
+          "source_quote": "Credit score 700+ Transunion",
+          "position": 3
+        },
+        {
+          "field": "guarantor.is_homeowner",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Homeownership required",
+          "position": 4
+        },
+        {
+          "field": "guarantor.is_us_citizen",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Customers must be US Citizen.",
+          "position": 5
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA"
+          ],
+          "hard": true,
+          "source_quote": "Citizens Bank will no longer provide financing for applicants/ dealers in the State of California.",
+          "position": 6
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "cannabis"
+          ],
+          "hard": true,
+          "source_quote": "Cannabis related equipment/businesses are not desired.",
+          "position": 7
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "Applicants with previous bankruptcy must be over 5 years' discharged.",
+          "position": 8
+        },
+        {
+          "field": "equipment.type",
+          "operator": "in",
+          "value": [
+            "class_8_truck",
+            "class_8_trailer",
+            "reefer_trailer",
+            "dump_truck",
+            "medium_duty_truck",
+            "light_duty_truck",
+            "construction_equipment",
+            "automotive_repair_equipment",
+            "office_equipment",
+            "restaurant_equipment",
+            "lawn_and_turf_equipment",
+            "farm_equipment",
+            "audio_visual_equipment",
+            "medical_equipment",
+            "janitorial_equipment",
+            "machine_tool",
+            "forklift",
+            "vocational_truck"
+          ],
+          "hard": true,
+          "source_quote": "Class 8 Truck, Class 8 Trailers, Dump Truck, Medium Duty Trucks, Light Duty Trucks, Construction Equipment, Automotive Repair Equipment, Copy Machines/Office Equipment, Restaurant Equipment (Approved Franchise Only), Commercial Lawn/Turf Equipment, Farm Equipment, Audio/Visual Equipment, Medical Equipment (must be medical doctor), Janitorial Equipment, Machine Tools, Material Handling Equipment",
+          "position": 9
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "between",
+          "value": [
+            24,
+            60
+          ],
+          "hard": true,
+          "source_quote": "24-60 months",
+          "position": 10
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 2 (Non Homeowner Program)",
+      "rank": 2,
+      "app_only_max_amount": 50000,
+      "criteria": [
+        {
+          "field": "guarantor.is_homeowner",
+          "operator": "is_false",
+          "hard": true,
+          "source_quote": "Non Homeowner Program",
+          "position": 0
+        },
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "will be required to guaranty the transaction",
+          "position": 1
+        },
+        {
+          "field": "loan.amount",
+          "operator": "lte",
+          "value": 50000,
+          "hard": true,
+          "source_quote": "$50,000 ALL IN (Total Relationship)",
+          "position": 2
+        },
+        {
+          "field": "guarantor.min_fico",
+          "operator": "gte",
+          "value": 700,
+          "hard": true,
+          "source_quote": "700+ Transunion Credit Score",
+          "position": 3
+        },
+        {
+          "field": "business.years_in_business",
+          "operator": "gte",
+          "value": 2,
+          "hard": true,
+          "source_quote": "2 years TIB is required",
+          "position": 4
+        },
+        {
+          "field": "guarantor.is_us_citizen",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Customers must be US Citizen.",
+          "position": 5
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA"
+          ],
+          "hard": true,
+          "source_quote": "Citizens Bank will no longer provide financing for applicants/ dealers in the State of California.",
+          "position": 6
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "cannabis"
+          ],
+          "hard": true,
+          "source_quote": "Cannabis related equipment/businesses are not desired.",
+          "position": 7
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "Applicants with previous bankruptcy must be over 5 years' discharged.",
+          "position": 8
+        },
+        {
+          "field": "equipment.type",
+          "operator": "in",
+          "value": [
+            "class_8_truck",
+            "class_8_trailer",
+            "reefer_trailer",
+            "dump_truck",
+            "medium_duty_truck",
+            "light_duty_truck",
+            "construction_equipment",
+            "automotive_repair_equipment",
+            "office_equipment",
+            "restaurant_equipment",
+            "lawn_and_turf_equipment",
+            "farm_equipment",
+            "audio_visual_equipment",
+            "medical_equipment",
+            "janitorial_equipment",
+            "machine_tool",
+            "forklift",
+            "vocational_truck"
+          ],
+          "hard": true,
+          "source_quote": "Class 8 Truck, Class 8 Trailers, Dump Truck, Medium Duty Trucks, Light Duty Trucks, Construction Equipment, Automotive Repair Equipment, Copy Machines/Office Equipment, Restaurant Equipment (Approved Franchise Only), Commercial Lawn/Turf Equipment, Farm Equipment, Audio/Visual Equipment, Medical Equipment (must be medical doctor), Janitorial Equipment, Machine Tools, Material Handling Equipment",
+          "position": 9
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "between",
+          "value": [
+            24,
+            60
+          ],
+          "hard": true,
+          "source_quote": "24-60 months",
+          "position": 10
+        }
+      ],
+      "rates": []
+    },
+    {
+      "name": "Tier 3",
+      "rank": 3,
+      "criteria": [
+        {
+          "field": "guarantor.has_personal_guarantor",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "will be required to guaranty the transaction",
+          "position": 0
+        },
+        {
+          "field": "loan.amount",
+          "operator": "lte",
+          "value": 1000000,
+          "hard": true,
+          "source_quote": "Transactions $75,000 - $1,000,000 or those that don’t fit in the above tiers will be considered with full financials",
+          "position": 1
+        },
+        {
+          "field": "guarantor.is_us_citizen",
+          "operator": "is_true",
+          "hard": true,
+          "source_quote": "Customers must be US Citizen.",
+          "position": 2
+        },
+        {
+          "field": "business.state",
+          "operator": "not_in",
+          "value": [
+            "CA"
+          ],
+          "hard": true,
+          "source_quote": "Citizens Bank will no longer provide financing for applicants/ dealers in the State of California.",
+          "position": 3
+        },
+        {
+          "field": "business.industry",
+          "operator": "not_in",
+          "value": [
+            "cannabis"
+          ],
+          "hard": true,
+          "source_quote": "Cannabis related equipment/businesses are not desired.",
+          "position": 4
+        },
+        {
+          "field": "guarantor.years_since_bankruptcy",
+          "operator": "gte",
+          "value": 5,
+          "hard": true,
+          "source_quote": "Applicants with previous bankruptcy must be over 5 years' discharged.",
+          "position": 5
+        },
+        {
+          "field": "equipment.type",
+          "operator": "in",
+          "value": [
+            "class_8_truck",
+            "class_8_trailer",
+            "reefer_trailer",
+            "dump_truck",
+            "medium_duty_truck",
+            "light_duty_truck",
+            "construction_equipment",
+            "automotive_repair_equipment",
+            "office_equipment",
+            "restaurant_equipment",
+            "lawn_and_turf_equipment",
+            "farm_equipment",
+            "audio_visual_equipment",
+            "medical_equipment",
+            "janitorial_equipment",
+            "machine_tool",
+            "forklift",
+            "vocational_truck"
+          ],
+          "hard": true,
+          "source_quote": "Class 8 Truck, Class 8 Trailers, Dump Truck, Medium Duty Trucks, Light Duty Trucks, Construction Equipment, Automotive Repair Equipment, Copy Machines/Office Equipment, Restaurant Equipment (Approved Franchise Only), Commercial Lawn/Turf Equipment, Farm Equipment, Audio/Visual Equipment, Medical Equipment (must be medical doctor), Janitorial Equipment, Machine Tools, Material Handling Equipment",
+          "position": 6
+        },
+        {
+          "field": "loan.term_months",
+          "operator": "between",
+          "value": [
+            24,
+            60
+          ],
+          "hard": true,
+          "source_quote": "24-60 months",
+          "position": 7
+        }
+      ],
+      "rates": []
+    }
+  ],
+  "notes": [
+    {
+      "kind": "informational",
+      "text": "The equipment list is treated as exhaustive: only equipment named in the term tables or under Other Equipment is accepted. Vocational trucks are included because the truck term tables cover them."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Class 8 Truck Terms (excludes dump): Mileage 0 - 200,000: 60-months; 200,001- 400,000: 48-months; 400,001- 600,000: 36-months; 601,001 - Above: Not Desired. *Engine overhauls do not help with term guidelines"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Class 8 Trailers: Year Model 2020-New: 60-months; 2016-2019: 48-months; 2014-2015: 36-months; 2011-2013: 24-months. *Terms may adjust due to high/low hours on a reefer unit"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Dump Truck Terms: Year Model 2021-New: Single Axle 60-months, Tandam + 60-months; 2019-2020: 48-months, 48-months; 2015-2018: NA, 36-months. * Mileage over 500,000 not desired"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Medium Duty Trucks: Year Model New: 60-months; 2022-2024: 48-months; 2019-2021: 36-months; 2016-2018: 24-months. * Engine Overhauls do not help with term guidelines. Mileage over 350,000 not desired; Mileage 250,000-349,999 24-months regardless of age."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Light Duty Trucks: Year Model New: 60-months; 2022-2024: 48-months; 2020-2021: 36-months. * Engine Overhauls do not help with term guidelines. Mileage over 175,001 not desired; Mileage 125,000-175,000 24-months regardless of age."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Construction Equipment: Year Model 2022-New: Heavy 60-months, Medium 60-months, Light 60-months; 2018-2021: 48-months, 48-months, 42-months; 2015-2017: 36-months, 36-months, 30-months; 2006-2014: 24-months, 24-months. * Terms may be adjusted due to high/low hours"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Restaurant Equipment (Approved Franchise Only)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Medical Equipment (must be medical doctor)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Owners with at least 10% ownership must PG",
+      "program": "Tier 1 (General Program)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "CDL Required (if needed)",
+      "program": "Tier 1 (General Program)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "Class A CDL for 5 years if trucking, 5 years verifiable industry experience if other industry",
+      "program": "Tier 2 (Start up Program)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "GPS Required",
+      "program": "Tier 2 (Start up Program)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "5 years at current residence",
+      "program": "Tier 2 (Non Homeowner Program)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "GPS Required",
+      "program": "Tier 2 (Non Homeowner Program)"
+    },
+    {
+      "kind": "unmapped",
+      "text": "All owners with at 10% or more ownership will be required to guaranty the transaction."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Non-CDL Owners buying CDL required equipment must have a minimum of 10 units."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Private Party transaction will be considered only with title upfront before closing and will require a DOT and 3rd party inspection at bank's choosing (NO EXCEPTIONS). Private Party Transactions on non-titled equipment is not offered."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Sale leaseback or cash out transactions are not offered."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Consignment transactions will be considered but will be treated as a private party transaction."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Refinance transactions are not considered."
+    },
+    {
+      "kind": "unmapped",
+      "text": "Straw purchase/investor deals are not allowed."
+    },
+    {
+      "kind": "informational",
+      "text": "Terms based on age, type of equipment and overall condition 24-60 months"
+    },
+    {
+      "kind": "informational",
+      "text": "10 Points Max (1 split to Citizens), 3 months bank statements",
+      "program": "Tier 1 (General Program)"
+    },
+    {
+      "kind": "informational",
+      "text": "7 points max (1 split to Citizens); 3 months bank statements",
+      "program": "Tier 2 (Start up Program)"
+    },
+    {
+      "kind": "informational",
+      "text": "7 points max (1 split to Citizens); 3 months bank statements",
+      "program": "Tier 2 (Non Homeowner Program)"
+    },
+    {
+      "kind": "informational",
+      "text": "Full financials: Last 2 years business tax returns or audited financials; Last 2 years personal tax returns on each guarantor; current personal financial statement on each guarantor; current debt schedule on the business; article of incorporation or corporate resolution; last 3 months bank statements",
+      "program": "Tier 3"
+    },
+    {
+      "kind": "informational",
+      "text": "Insurance: All Equipment financed must be insured for a minimum of the amount financed showing The Citizens bank as Loss Payee. Maximum deductible of $2500."
+    },
+    {
+      "kind": "informational",
+      "text": "We do not currently report to personal or business credit unless a default has occurred."
+    },
+    {
+      "kind": "informational",
+      "text": "Early Payoff: We offer a discounted payoff if pay history is good, instead of a sum of all payment contract balance."
+    },
+    {
+      "kind": "informational",
+      "text": "First payment is due 30 days from funding. We can go up to 45 days IF we know before creating the docs as this will change the payment amount."
+    },
+    {
+      "kind": "informational",
+      "text": "ACH is preferred method of payment on all transactions. Customer can pick their ACH date as long as it is before the due date."
+    },
+    {
+      "kind": "informational",
+      "text": "We use an Equipment Finance Agreement (EFA) as our contract. We do not charge interim rent."
+    },
+    {
+      "kind": "informational",
+      "text": "We do not send out monthly statements or invoices (this is why ACH is the preferred method of payment)."
+    },
+    {
+      "kind": "informational",
+      "text": "Lemon Squad is generally the preferred 3rd party inspector unless they do not have an inspector close or cant get to it. Broker can order the Lemon Squad inspection through the Lemon Squad website. *Make sure no check engine lights or mechanical issue with equipment or transaction will not fund until repaired. NIS is no longer an accepted 3rd party inspection service."
+    },
+    {
+      "kind": "informational",
+      "text": "Original contracts are required but we can fund on copies. We will fund dealership and broker fee on copies if dealership is doing title work. If Dealership is not doing title work, we will fund dealership on copies and hold broker fee until originals have been received. Original contracts must be received with title on all Private Party/Consignment transactions."
+    },
+    {
+      "kind": "informational",
+      "text": "We currently do not have web access for equipment finance transactions. Customers will need to call us for balances, inquiries etc."
+    },
+    {
+      "kind": "informational",
+      "text": "Temporary Insurance is not desired but 30 day policies will be accepted with preapproval with good reason."
+    },
+    {
+      "kind": "informational",
+      "text": "Cross Corp transactions will be considered depending on overall credit performance."
+    },
+    {
+      "kind": "informational",
+      "text": "Brokers and Vendors who are currently not approved to do business with Citizens Bank will be required to provide documentation of time in business, line of business, ownership of the business, business license. Approval of the vendor must be obtained before applicantions may be received."
+    }
+  ]
+}
