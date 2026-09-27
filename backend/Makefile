@@ -16,6 +16,9 @@ test: ## Run unit tests
 schema: ## Write JSON Schemas for seed files to seeds/schema/
 	poetry run python -m lender_match.cli schema
 
+seed: ## Load the seed judgment questions and lenders into the database
+	poetry run python -m lender_match.cli seed
+
 validate-seeds: ## Check that every seed file loads and passes the criterion check
 	poetry run pytest tests/test_seed_files.py -q
 
@@ -31,4 +34,4 @@ help: ## Show this help message
 	@echo "Available commands:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: install fmt verify test schema validate-seeds migrate migration help
+.PHONY: install fmt verify test schema seed validate-seeds migrate migration help

@@ -2,11 +2,13 @@
 lender policies.
 """
 
+from datetime import datetime
 from decimal import Decimal
 from typing import Any
+from uuid import UUID
 
 from lender_match.domain.base import DomainModel
-from lender_match.enums import CriterionOperator
+from lender_match.enums import CriterionOperator, MatchRunStatus
 
 
 class CriterionResult(DomainModel):
@@ -57,3 +59,17 @@ class JudgmentAnswer(DomainModel):
 
     distribution: dict[str, Decimal]
     confidence: Decimal | None
+
+
+class MatchRunRecord(DomainModel):
+    """One run of the matcher over an application."""
+
+    id: UUID
+    application_id: UUID
+    status: MatchRunStatus
+    field_values: dict[str, Any] | None
+    error: str | None
+    started_at: datetime | None
+    finished_at: datetime | None
+    created_at: datetime
+    updated_at: datetime
