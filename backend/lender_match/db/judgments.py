@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 
 class JudgmentQuestion(BaseTable):
     """A question a model answers about the application, defining one
-    catalog field.
+    application field.
     """
 
     __tablename__ = "judgment_questions"

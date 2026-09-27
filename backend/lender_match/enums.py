@@ -42,6 +42,7 @@ class CriterionOperator(StrEnum):
     is_true = "is_true"
     is_false = "is_false"
     is_null = "is_null"
+    count_at_least = "count_at_least"
 
 
 class PolicyNoteKind(StrEnum):

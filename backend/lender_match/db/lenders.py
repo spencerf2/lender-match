@@ -96,7 +96,7 @@ class Program(BaseTable):
 
 
 class Criterion(BaseTable):
-    """One rule a program applies to one field in the catalog."""
+    """One rule a program applies to one application field."""
 
     __tablename__ = "criteria"
 
