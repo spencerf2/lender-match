@@ -13,6 +13,12 @@ verify: ## Lint, check formatting, and typecheck
 test: ## Run unit tests
 	poetry run pytest tests/ -v
 
+schema: ## Write JSON Schemas for seed files to seeds/schema/
+	poetry run python -m lender_match.cli schema
+
+validate-seeds: ## Check that every seed file loads and passes the criterion check
+	poetry run pytest tests/test_seed_files.py -q
+
 migrate: ## Run alembic migrations
 	@echo "Running migrations..."
 	@poetry run alembic upgrade head
@@ -25,4 +31,4 @@ help: ## Show this help message
 	@echo "Available commands:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: install fmt verify test migrate migration help
+.PHONY: install fmt verify test schema validate-seeds migrate migration help

@@ -8,13 +8,12 @@ built-in fields, defined here in code. Judgment fields are built from
 judgment question rows at run time by `application_fields`.
 """
 
-from collections.abc import Iterable, Sequence
-from decimal import Decimal
+from collections.abc import Iterable
 from enum import StrEnum
-from typing import Protocol
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from lender_match.domain.policy import JudgmentQuestionDraft
 from lender_match.enums import CriterionOperator, JudgmentOutputType
 
 
@@ -59,20 +58,6 @@ _OPERATORS_BY_TYPE: dict[FieldType, tuple[CriterionOperator, ...]] = {
     FieldType.enum: (CriterionOperator.in_, CriterionOperator.not_in),
     FieldType.trade_lines: (CriterionOperator.count_at_least,),
 }
-
-
-class CountAtLeast(BaseModel):
-    """The value of a `count_at_least` criterion on trade lines.
-
-    Passes when at least `count` trade lines have an amount of
-    `min_amount` or more and were active within `active_within_months`.
-    """
-
-    model_config = ConfigDict(frozen=True)
-
-    count: int = Field(ge=1)
-    min_amount: Decimal = Field(ge=0)
-    active_within_months: int = Field(ge=1)
 
 
 class FieldDefinition(BaseModel):
@@ -346,16 +331,8 @@ BUILT_IN_FIELDS: tuple[FieldDefinition, ...] = (
 )
 
 
-class JudgmentQuestionLike(Protocol):
-    """What `application_fields` needs from a judgment question row."""
-
-    key: str
-    output_type: JudgmentOutputType
-    options: Sequence[str] | None
-
-
 def judgment_field_definitions(
-    question: JudgmentQuestionLike,
+    question: JudgmentQuestionDraft,
 ) -> tuple[FieldDefinition, ...]:
     """The application fields one judgment question defines.
 
@@ -427,7 +404,7 @@ class ApplicationFields:
 
 
 def application_fields(
-    judgment_questions: Iterable[JudgmentQuestionLike] = (),
+    judgment_questions: Iterable[JudgmentQuestionDraft] = (),
 ) -> ApplicationFields:
     """Built-in fields plus those the judgment questions define."""
     definitions = list(BUILT_IN_FIELDS)
