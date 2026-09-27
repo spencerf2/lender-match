@@ -18,6 +18,10 @@ def is_probability(value: Any) -> bool:
     return is_number(value) and 0 <= value <= 1
 
 
+def to_decimal(value: Any) -> Decimal:
+    return value if isinstance(value, Decimal) else Decimal(str(value))
+
+
 DAYS_PER_YEAR = Decimal("365.25")
 
 

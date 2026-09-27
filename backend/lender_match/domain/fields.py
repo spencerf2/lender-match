@@ -75,6 +75,7 @@ class FieldDefinition(BaseModel):
     # value is the good outcome, such as years since bankruptcy when
     # there was none.
     null_passes: bool = False
+    absent_text: str | None = None
     values: tuple[str, ...] | None = None
     format: FieldFormat = FieldFormat.number
 
@@ -214,6 +215,7 @@ BUILT_IN_FIELDS: tuple[FieldDefinition, ...] = (
         source=FieldSource.derived,
         nullable=True,
         null_passes=True,
+        absent_text="No bankruptcy on record.",
         format=FieldFormat.years,
     ),
     # Business credit
