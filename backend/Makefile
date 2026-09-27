@@ -13,8 +13,16 @@ verify: ## Lint, check formatting, and typecheck
 test: ## Run unit tests
 	poetry run pytest tests/ -v
 
+migrate: ## Run alembic migrations
+	@echo "Running migrations..."
+	@poetry run alembic upgrade head
+
+migration: ## Autogenerate a migration: make migration m="message"
+	@if [ -z "$(m)" ]; then echo 'Usage: make migration m="message"'; exit 1; fi
+	alembic revision --autogenerate -m "$(m)"
+
 help: ## Show this help message
 	@echo "Available commands:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: install fmt verify test help
+.PHONY: install fmt verify test migrate migration help

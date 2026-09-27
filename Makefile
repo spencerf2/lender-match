@@ -9,6 +9,17 @@ install: ## Install backend dependencies and set up the git hook
 fmt: ## Format and lint code
 	cd backend && $(MISE_EXEC) $(MAKE) fmt
 
+db-start: ## Start postgres container and wait until it accepts connections
+	docker compose up -d --wait postgres
+
+db-stop: ## Stop postgres container
+	docker compose stop postgres
+
+db-reset: ## Destroy postgres container and its data, recreate, re-run migrations
+	docker compose down -v
+	docker compose up -d --wait postgres
+	cd backend && $(MISE_EXEC) $(MAKE) migrate
+
 help: ## Show this help message
 	@echo "Available commands:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
@@ -19,4 +30,4 @@ help: ## Show this help message
 
 setup-hooks: .setup-hooks-done
 
-.PHONY: install fmt help setup-hooks
+.PHONY: install fmt db-start db-stop db-reset help setup-hooks

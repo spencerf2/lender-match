@@ -6,7 +6,12 @@ requires-python = ">=3.12,<4.0"
 # All dependencies, runtime and dev, are pinned to an exact version
 # published at least 7 days ago, for supply-chain security
 dependencies = [
-    "sqlalchemy (==2.0.54)"
+  "sqlalchemy (==2.0.54)",
+  "alembic (==1.20.0)",
+  "psycopg[binary] (==3.3.6)",
+  "pydantic (==2.13.5)",
+  "pydantic-settings (==2.15.0)",
+  "mako (==1.4.1)",               # Pulled in by alembic
 ]
 
 [tool.poetry.group.dev.dependencies]
@@ -24,23 +29,23 @@ venvPath = "."
 venv = ".venv"
 
 [tool.ruff]
-target-version = "py312"  # match .python-version major.minor
+target-version = "py312" # match .python-version major.minor
 
 [tool.ruff.lint]
 # Keep ruff's default rules (E4, E7, E9, F) and add isort on top
 extend-select = [
-  "I",  # isort
-  "W505",  # Docstring or comment line too long
+  "I",    # isort
+  "W505", # Docstring or comment line too long
 ]
 ignore = [
-  "E701",  # Multiple statements on one line (colon)
+  "E701", # Multiple statements on one line (colon)
 ]
 
 [tool.ruff.lint.pycodestyle]
-max-doc-length = 72  # PEP 8's limit for docstrings and comments
+max-doc-length = 72 # PEP 8's limit for docstrings and comments
 
 [tool.ruff.lint.per-file-ignores]
-"__init__.py" = ["F401"]  # Allow unused imports
+"__init__.py" = ["F401"] # Allow unused imports
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
