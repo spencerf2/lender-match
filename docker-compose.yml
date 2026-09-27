@@ -15,5 +15,19 @@ services:
       timeout: 5s
       retries: 10
 
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://lender_match:lender_match@postgres:5432/lender_match
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+
 volumes:
   postgres_data:

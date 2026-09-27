@@ -10,6 +10,9 @@ verify: ## Lint, check formatting, and typecheck
 	ruff format --check
 	pyright
 
+run: ## Start the API on port 8000, reloading on changes
+	poetry run uvicorn lender_match.api:app --reload --port 8000
+
 test: ## Run unit tests
 	poetry run pytest tests/ -v
 
@@ -34,4 +37,4 @@ help: ## Show this help message
 	@echo "Available commands:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: install fmt verify test schema seed validate-seeds migrate migration help
+.PHONY: install fmt verify run test schema seed validate-seeds migrate migration help

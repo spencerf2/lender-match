@@ -8,17 +8,21 @@ from lender_match.domain.results import JudgmentAnswer
 
 
 class DecisionProvider(Protocol):
-    """Answers judgment questions about an application."""
+    """Answers judgment questions about an application. Returns None
+    when it has no answer.
+    """
 
     def answer(
         self,
         question: JudgmentQuestionDraft,
         context: Mapping[str, Any],
-    ) -> JudgmentAnswer: ...
+    ) -> JudgmentAnswer | None: ...
 
 
 class FakeDecisionProvider:
-    """Returns fixed answers by question key, for tests."""
+    """Returns fixed answers by question key, and no answer for any
+    other key.
+    """
 
     def __init__(self, answers: dict[str, JudgmentAnswer]) -> None:
         self._answers = answers
@@ -27,5 +31,5 @@ class FakeDecisionProvider:
         self,
         question: JudgmentQuestionDraft,
         context: Mapping[str, Any],
-    ) -> JudgmentAnswer:
-        return self._answers[question.key]
+    ) -> JudgmentAnswer | None:
+        return self._answers.get(question.key)

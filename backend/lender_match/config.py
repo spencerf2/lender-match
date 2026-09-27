@@ -3,6 +3,7 @@
 from functools import cache
 from pathlib import Path
 
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ENV_FILE = Path(__file__).resolve().parent.parent / ".env"
@@ -18,6 +19,16 @@ class Settings(BaseSettings):
 
     database_url: str
     openrouter_api_key: str | None = None
+    decision_provider: str = "fake"
+
+    @field_validator("decision_provider")
+    @classmethod
+    def _check_decision_provider(cls, value: str) -> str:
+        if value != "fake":
+            raise ValueError(
+                f"decision_provider: {value!r} is not implemented; use 'fake'"
+            )
+        return value
 
 
 @cache

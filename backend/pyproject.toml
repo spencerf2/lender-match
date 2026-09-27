@@ -11,7 +11,10 @@ dependencies = [
   "psycopg[binary] (==3.3.6)",
   "pydantic (==2.13.5)",
   "pydantic-settings (==2.15.0)",
+  "fastapi (==0.141.1)",
+  "uvicorn (==0.53.0)",
   "mako (==1.4.1)",               # Pulled in by alembic
+  "starlette (==1.6.0)",          # Pulled in by fastapi
 ]
 
 [tool.poetry.group.dev.dependencies]

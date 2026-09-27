@@ -11,7 +11,7 @@ judgment question rows at run time by `application_fields`.
 from collections.abc import Iterable
 from enum import StrEnum
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, computed_field, model_validator
 
 from lender_match.domain.policy import JudgmentQuestionDraft
 from lender_match.enums import CriterionOperator, JudgmentOutputType
@@ -89,6 +89,7 @@ class FieldDefinition(BaseModel):
             raise ValueError(f"{self.key}: null_passes needs nullable")
         return self
 
+    @computed_field
     @property
     def allowed_operators(self) -> tuple[CriterionOperator, ...]:
         operators = _OPERATORS_BY_TYPE[self.type]
