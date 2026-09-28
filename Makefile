@@ -8,7 +8,7 @@ install: ## Install backend and frontend dependencies and set up the git hook
 	$(MAKE) setup-hooks
 
 dev: ## Start Postgres and the backend container, then the frontend dev server in the foreground
-	docker compose up -d --wait postgres backend
+	docker compose up -d --build --wait postgres backend
 	cd frontend && $(MAKE) dev
 
 fmt: ## Format and lint code

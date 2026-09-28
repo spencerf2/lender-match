@@ -13,6 +13,7 @@ Prerequisites:
 1. Docker with Compose
 2. Python 3.12
 3. Poetry
+4. Node and pnpm, for the frontend
 
 [mise](https://mise.jdx.dev) is optional. If installed, it selects the Python version and
 virtualenv, and the Makefiles use it when available and skip otherwise.
@@ -20,32 +21,40 @@ virtualenv, and the Makefiles use it when available and skip otherwise.
 From the repo root:
 
 ```sh
-make install     # Installs backend dependencies into backend/.venv and a pre-commit hook that runs the formatter
+make install     # Installs backend and frontend dependencies and a pre-commit hook that runs the formatter
 make db-start    # Starts Postgres 17 in Docker and waits until it accepts connections
 ```
 
-From `backend/`:
+From `backend/`, once:
 
 ```sh
 cp .env.example .env   # Creates .env with DATABASE_URL set to the Docker Postgres
 make migrate           # Runs alembic upgrade head
 make seed              # Loads the five lender policies and the judgment questions
-make run               # Serves the API on port 8000
 ```
 
-The API serves at <http://localhost:8000>. Its OpenAPI page is at <http://localhost:8000/docs>.
+Then from the repo root:
+
+```sh
+make dev         # Starts Postgres, the backend container, and the frontend dev server
+```
+
+The UI serves at <http://localhost:5173>. The API serves at <http://localhost:8000>, with
+its OpenAPI page at <http://localhost:8000/docs>.
+
+To run the two servers separately instead of `make dev`:
+
+```sh
+cd backend && make run    # Serves the API on port 8000
+cd frontend && make dev   # Starts the Vite dev server on port 5173
+```
+
+To have judgment questions answered by a model, set `DECISION_PROVIDER` to `openrouter`
+or `jev` in `backend/.env`, with `OPENROUTER_API_KEY`. The default, `fake`, needs no key.
 
 The lender PDFs are not committed since they are partner-distributed documents with named
 contacts. The seed files under `backend/seeds/` carry the policies extracted from them,
 with fictional contacts.
-
-### Frontend
-
-Confirm once the frontend lands.
-
-```sh
-cd frontend && pnpm install && pnpm dev   # http://localhost:5173
-```
 
 ## Architecture
 
@@ -92,9 +101,9 @@ The matcher module is deterministic and built from pure functions.
 Judgment questions are questions a model such as Jev (or Claude Sonnet 5) answers about an
 application, like whether the equipment is essential to the business. They are answered
 through the `DecisionProvider` interface: one method that takes a question and the application
-and returns an answer. The run calls that method and does not know what is behind it. This
-submission ships a fake provider, and the Jev adapter goes behind the same interface
-later.
+and returns an answer. The run calls that method and does not know what is behind it. The
+interface has three implementations: a fake, Claude on OpenRouter, and Jev. One environment
+variable, `DECISION_PROVIDER`, selects which one runs. Every answer is stored.
 
 ### Runs
 
