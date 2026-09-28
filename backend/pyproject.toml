@@ -15,6 +15,7 @@ dependencies = [
   "uvicorn (==0.53.0)",
   "mako (==1.4.1)",               # Pulled in by alembic
   "starlette (==1.6.0)",          # Pulled in by fastapi
+  "httpx (==0.28.1)",
 ]
 
 [tool.poetry.group.dev.dependencies]

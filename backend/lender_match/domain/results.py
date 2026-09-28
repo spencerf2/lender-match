@@ -54,11 +54,40 @@ class LenderResult(DomainModel):
     position: int | None
 
 
+class ProviderCall(DomainModel):
+    """The call a decision provider made to get an answer."""
+
+    provider: str
+    model: str
+    request: Any | None = None
+    response: Any | None = None
+    latency_ms: int | None = None
+
+
 class JudgmentAnswer(DomainModel):
     """A model's answer to one judgment question."""
 
     distribution: dict[str, Decimal]
     confidence: Decimal | None
+    call: ProviderCall | None = None
+
+
+class JudgmentResultRecord(DomainModel):
+    """One stored answer to a judgment question."""
+
+    id: UUID
+    match_run_id: UUID | None
+    judgment_question_id: UUID
+    question_key: str
+    provider: str
+    model: str
+    distribution: dict[str, Any]
+    confidence: Decimal | None
+    threshold_used: Decimal | None
+    resolved_value: Any
+    raw_request: Any | None
+    raw_response: Any | None
+    latency_ms: int | None
 
 
 class MatchRunRecord(DomainModel):
