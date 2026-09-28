@@ -9,9 +9,8 @@ from uuid import UUID
 
 from sqlalchemy.orm import Session
 
-from lender_match.config import get_config
 from lender_match.db.session import session_scope
-from lender_match.domain.decisions import DecisionProvider, FakeDecisionProvider
+from lender_match.domain.application import Application
 from lender_match.domain.fields import ApplicationFields, application_fields
 from lender_match.domain.matching import (
     evaluate_lender,
@@ -21,11 +20,13 @@ from lender_match.domain.matching import (
 )
 from lender_match.domain.policy import Lender
 from lender_match.domain.results import JudgmentAnswer, LenderResult
-from lender_match.enums import LenderStatus, MatchRunStatus
+from lender_match.enums import JudgmentOutputType, LenderStatus, MatchRunStatus
 from lender_match.repositories.applications import ApplicationRepository
 from lender_match.repositories.judgment_questions import JudgmentQuestionRepository
+from lender_match.repositories.judgment_results import JudgmentResultRepository
 from lender_match.repositories.lenders import LenderRepository
 from lender_match.repositories.runs import MatchRunRepository
+from lender_match.services.providers import decision_provider
 
 logger = logging.getLogger(__name__)
 
@@ -91,13 +92,34 @@ def _execute(session: Session, run_id: UUID) -> None:
         )
     )
     questions_by_key = {question.key: question for question in questions}
-    provider = _decision_provider()
-    context = application.model_dump(mode="json")
+    provider = decision_provider()
+    context = _judgment_context(application)
+    judgment_results = JudgmentResultRepository(session)
     answers: dict[str, JudgmentAnswer] = {}
     for key in sorted(needed):
-        answer = provider.answer(questions_by_key[key], context)
-        if answer is not None:
-            answers[key] = answer
+        question = questions_by_key[key]
+        answer = provider.answer(question, context)
+        if answer is None:
+            continue
+        answers[key] = answer
+        call = answer.call
+        judgment_results.add(
+            run_id=run_id,
+            question_id=question.id,
+            provider=call.provider if call else "unknown",
+            model=call.model if call else "unknown",
+            distribution=answer.distribution,
+            confidence=answer.confidence,
+            threshold_used=(
+                question.yes_threshold
+                if question.output_type is JudgmentOutputType.yes_no
+                else None
+            ),
+            resolved_value=resolve_judgment(question, answer)[key],
+            raw_request=call.request if call else None,
+            raw_response=call.response if call else None,
+            latency_ms=call.latency_ms if call else None,
+        )
     if answers:
         for key, answer in answers.items():
             field_values.update(resolve_judgment(questions_by_key[key], answer))
@@ -129,9 +151,20 @@ def _evaluate_all(
     ]
 
 
-def _decision_provider() -> DecisionProvider:
-    match get_config().decision_provider:
-        case "fake":
-            return FakeDecisionProvider({})
-        case other:
-            raise ValueError(f"decision_provider {other!r} is not implemented")
+def _judgment_context(application: Application) -> dict[str, Any]:
+    """Only what the judgment questions need: no names or credit
+    scores go to a model.
+    """
+    business = application.business
+    loan = application.loan_request
+    return {
+        "business": {
+            "industry": business.industry,
+            "description": business.description,
+        },
+        "equipment": {
+            "type": loan.equipment_type,
+            "description": loan.equipment_description,
+            "year": loan.equipment_year,
+        },
+    }

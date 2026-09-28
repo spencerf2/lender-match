@@ -4,7 +4,7 @@ from collections.abc import Mapping
 from typing import Any, Protocol
 
 from lender_match.domain.policy import JudgmentQuestionDraft
-from lender_match.domain.results import JudgmentAnswer
+from lender_match.domain.results import JudgmentAnswer, ProviderCall
 
 
 class DecisionProvider(Protocol):
@@ -32,4 +32,9 @@ class FakeDecisionProvider:
         question: JudgmentQuestionDraft,
         context: Mapping[str, Any],
     ) -> JudgmentAnswer | None:
-        return self._answers.get(question.key)
+        answer = self._answers.get(question.key)
+        if answer is None or answer.call is not None:
+            return answer
+        return answer.model_copy(
+            update={"call": ProviderCall(provider="fake", model="fake")}
+        )
