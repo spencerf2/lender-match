@@ -54,6 +54,10 @@ def _format_value(value: Any, definition: FieldDefinition) -> str:
             return str(value)
 
 
+def _yes_no(value: Any) -> str:
+    return "yes" if value is True else "no"
+
+
 def _absent_text(definition: FieldDefinition) -> str:
     if definition.absent_text is not None:
         return definition.absent_text
@@ -96,9 +100,12 @@ def _compare(
                 f"{label} must not be one of: {', '.join(value)}. Applicant: {actual}."
             )
         case op.is_true:
-            return actual is True, f"{label} is required. Applicant: no."
+            return actual is True, f"{label} is required. Applicant: {_yes_no(actual)}."
         case op.is_false:
-            return actual is False, f"{label} is not allowed. Applicant: yes."
+            return (
+                actual is False,
+                f"{label} is not allowed. Applicant: {_yes_no(actual)}.",
+            )
         case op.is_null:
             passed = False
             rule = "must be absent"

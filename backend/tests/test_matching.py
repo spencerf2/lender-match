@@ -456,3 +456,29 @@ def test_explanations_print_money_and_percent_in_their_format():
     assert _explanation(amount, loan__amount=Decimal(5000)) == (
         "Requested amount must be between $10,000 and $500,000. Applicant has $5,000."
     )
+
+
+def test_boolean_explanations_print_the_applicant_answer():
+    homeowner = _hard("guarantor.is_homeowner", CriterionOperator.is_true)
+    judgments = _hard("guarantor.has_judgments", CriterionOperator.is_false)
+
+    passed = evaluate_criterion(
+        homeowner, _field_values(guarantor__is_homeowner=True), FIELDS
+    )
+    assert passed.passed is True
+    assert passed.explanation == (
+        "Every guarantor is a homeowner is required. Applicant: yes."
+    )
+    assert _explanation(homeowner, guarantor__is_homeowner=False) == (
+        "Every guarantor is a homeowner is required. Applicant: no."
+    )
+    passed = evaluate_criterion(
+        judgments, _field_values(guarantor__has_judgments=False), FIELDS
+    )
+    assert passed.passed is True
+    assert passed.explanation == (
+        "Any guarantor has a judgment on record is not allowed. Applicant: no."
+    )
+    assert _explanation(judgments, guarantor__has_judgments=True) == (
+        "Any guarantor has a judgment on record is not allowed. Applicant: yes."
+    )
