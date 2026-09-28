@@ -2,9 +2,14 @@
 # rather than the one active in the caller's shell; skipped without mise
 MISE_EXEC := $(if $(shell command -v mise),mise exec --,)
 
-install: ## Install backend dependencies and set up the git hook
+install: ## Install backend and frontend dependencies and set up the git hook
 	cd backend && $(MISE_EXEC) $(MAKE) install
+	cd frontend && $(MAKE) install
 	$(MAKE) setup-hooks
+
+dev: ## Start Postgres and the backend container, then the frontend dev server in the foreground
+	docker compose up -d --wait postgres backend
+	cd frontend && $(MAKE) dev
 
 fmt: ## Format and lint code
 	cd backend && $(MISE_EXEC) $(MAKE) fmt
@@ -30,4 +35,4 @@ help: ## Show this help message
 
 setup-hooks: .setup-hooks-done
 
-.PHONY: install fmt db-start db-stop db-reset help setup-hooks
+.PHONY: install dev fmt db-start db-stop db-reset help setup-hooks
